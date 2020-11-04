@@ -1,0 +1,19 @@
+<%- include('partials/header'); -%>
+
+<h1> Home </h1>
+
+<p> <%=homeStartingContent%> </p>
+
+<% results.forEach((usersPost) => { %>
+<h1> <%= usersPost.title %> </h1>
+<h6> <%= usersPost.date %> </h6>
+<form id="submitForm" action="/post/<%= usersPost._id %>" method="post">
+  <p> <%= usersPost.content.substring(0, 100) + " ..."; %> <a onclick="document.getElementById('submitForm').submit();" id="submitLink" href="/post/<%= usersPost._id %>">Read more</a> </p>
+</form>
+<%});%>
+
+<form class="" action="/compose" method="get">
+  <button class="btn btn-secondary" type="submit" name="button">Wanna Log Something?</button>
+</form>
+
+<%- include('partials/footer'); -%>
